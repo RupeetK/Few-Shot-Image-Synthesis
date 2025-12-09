@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
 
 
 import warnings
@@ -21,14 +17,14 @@ from torch.utils.data import random_split
 from collections import Counter
 
 
-# In[2]:
+
 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu')
 print(f'Using device {device}')
 
 
-# In[3]:
+
 
 
 # Handling class imbalance
@@ -99,7 +95,7 @@ def create_balanced_sampler(dataset):
 
 
 
-# In[6]:
+
 
 
 #DATA PREPARATION
@@ -206,7 +202,7 @@ def load_datasets(gan_path, real_path, batch_size = 32, num_workers = 2,train_sp
             num_classes, class_names, class_weights)
 
 
-# In[7]:
+
 
 
 # MODEL ARCHITECTURE
@@ -257,7 +253,7 @@ class SourceModel(nn.Module):
 
 
 
-# In[8]:
+
 
 
 # TRAINING SOURCE MODEL ON GAN IMAGES
@@ -321,7 +317,6 @@ def train_model(model, gan_loader, epochs, class_weights, lr = 0.001):
     return model
 
 
-# In[9]:
 
 
 # EVALUATION
@@ -429,7 +424,7 @@ def visualize(gan_features, real_features, gan_labels, real_labels, class_names,
 
 
 
-# In[10]:
+
 
 
 # DOMAIN ADAPTATION
@@ -624,7 +619,7 @@ def train_DANN(model, gan_loader, real_loader, epochs, class_weights, lr = 0.000
     return model
 
 
-# In[11]:
+
 
 
 def plot_training_metrics(history):
@@ -667,7 +662,7 @@ def plot_training_metrics(history):
 
 
 
-# In[12]:
+
 
 
 # DANN EVALUATION
@@ -682,7 +677,7 @@ class DANNEvaluator(nn.Module):
         return class_out, features
 
 
-# In[13]:
+
 
 
 from sklearn.metrics import confusion_matrix, classification_report
@@ -713,7 +708,7 @@ def analyze_classification(true_labels, pred_labels, class_names):
         print(f'{class_name} accuracy: {class_acc:.2%}')
 
 
-# In[16]:
+
 
 
 def main():
@@ -776,14 +771,14 @@ def main():
                           class_names)
 
 
-# In[17]:
+
 
 
 if __name__=='__main__':
     main()
 
 
-# In[ ]:
+
 
 
 
